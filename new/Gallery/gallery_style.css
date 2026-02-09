@@ -1,0 +1,206 @@
+.global_container {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+  background-color: #fff;
+  box-shadow: 0 6px 24px rgba(12, 20, 30, 0.08);
+  border-radius: 10px;
+}
+
+:root{
+  --bg: #0f1724;
+  --panel: #0b1220;
+  --muted: #9aa4b2;
+  --accent: #6dd3ff;
+  --accent-2: #7b61ff;
+  --white: #ffffff;
+  --container-width: 1100px;
+  --radius: 10px;
+  --glass: rgba(255,255,255,0.03);
+}
+
+/* Base layout */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+body{background:linear-gradient(180deg,#071127 0%, #081428 60%);color:var(--white);-webkit-font-smoothing:antialiased}
+
+.container{max-width:var(--container-width);margin:0 auto;padding:0 20px;width:100%}
+
+/* Header */
+.site-header{background:linear-gradient(90deg,var(--panel), rgba(11,18,32,0.85));backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.site-brand{display:flex;align-items:center;gap:12px}
+.site-brand img{height:44px;width:auto;border-radius:8px}
+.site-brand h1{font-size:1.1rem;margin:0;font-weight:700}
+
+/* Navbar */
+.site-header nav{display:flex;gap:8px;align-items:center}
+.site-header nav a{color:var(--white);padding:8px 14px;border-radius:999px;background:transparent;text-decoration:none;font-weight:600;opacity:0.95;transition:all .18s ease}
+.site-header nav a:hover{transform:translateY(-2px);background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#071127;box-shadow:0 6px 18px rgba(123,97,255,0.12)}
+
+/* Main */
+.site-main{padding:28px 0}
+
+/* Gallery Container */
+.gallery {
+    padding: 0 20px;
+}
+.site-footer{border-top:1px solid rgba(255,255,255,0.04);padding:18px 0;background:transparent}
+.site-footer .container{display:flex;align-items:center;justify-content:space-between}
+.site-footer p{margin:0;color:var(--muted)}
+.social-links a{color:var(--muted);margin-left:12px;text-decoration:none}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-family: 'Bungee', cursive;
+    font-size: 48px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+/* GALLERY GRID */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px;
+    gap: 30px;
+    animation: fadeIn 1s ease-in;
+    margin-bottom: 80px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* GALLERY ITEM */
+.item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #ddd;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.18);
+    padding: 8px;
+}
+
+/* IMAGE */
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* HOVER EFFECT */
+.item:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+
+/* TEXT OVER IMAGE */
+.item::after {
+    content: "Learning";
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.item:hover::after {
+    opacity: 1;
+}
+
+/* SIZE VARIANTS */
+.item.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.item.wide {
+    grid-column: span 2;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* CLOSE */
+#close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+/* DOWNLOAD */
+#downloadBtn {
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    background: white;
+    color: black;
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Responsiveness */
+@media (max-width:900px){
+  .site-header .container{padding:14px 0}
+}
+
+@media (max-width:520px){
+  .site-header nav{flex-wrap:wrap;gap:6px}
+  .site-brand h1{font-size:1rem}
+}
